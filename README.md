@@ -12,7 +12,7 @@ Added feature:
 - Tooltip
 
 Future:
-- Building automated conversion from SHP file format to GeoJSON as polygon and point is built by using GeoJSON
+- Building automatic conversion from SHP to GeoJSON file format because polygons and points are built using GeoJSON
 - Functional search bar
 - Embedded PDF as pop up
 - Enhance the HTML style for table
