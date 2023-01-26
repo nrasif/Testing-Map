@@ -3,19 +3,19 @@
 A demo version can be accessed at this [link](https://web-production-5557.up.railway.app). This app is built using Folium as map with Flask as web application framework.
 
 Added feature:
--Search bar
--Mini Map with open-street-map layout
--Toogle on and off blocks
--ESRI Satellite layout
--Embedded inteactive plot using Plotly as pop up point
--Table and link as pop up on block polygons
--Tooltip
+- Search bar
+- Mini Map with open-street-map layout
+- Toogle on and off blocks
+- ESRI Satellite layout
+- Embedded inteactive plot using Plotly as pop up point
+- Table and link as pop up on block polygons
+- Tooltip
 
 Future:
--Building automated conversion from SHP file format to GeoJSON as polygon and point is built by using GeoJSON
--Functional search bar
--Embedded PDF as pop up
--Enhance the HTML style for table
+- Building automated conversion from SHP file format to GeoJSON as polygon and point is built by using GeoJSON
+- Functional search bar
+- Embedded PDF as pop up
+- Enhance the HTML style for table
 
 ## Screenshot
 
