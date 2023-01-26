@@ -11,7 +11,7 @@ Added feature:
 - Table and link as pop up on block polygons
 - Tooltip
 
-Future:
+Future work:
 - Building automatic conversion from SHP to GeoJSON file format because polygons and points are built using GeoJSON
 - Functional search bar
 - Embedded PDF as pop up
