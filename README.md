@@ -13,9 +13,9 @@ Added feature:
 
 Future work:
 - Building automatic conversion from SHP to GeoJSON file format because polygons and points are built using GeoJSON
-- Functional search bar
-- Embedded PDF as pop up
-- Enhance the HTML style for table
+- Building functional search bar
+- Embedding PDF as pop up
+- Enhancing HTML style for table
 
 ## Screenshot
 
