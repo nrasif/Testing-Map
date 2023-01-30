@@ -107,8 +107,7 @@ well1, well2 = well_df #only 2 wells
 #Automatic well log plots if any well log data comes in in the future
 html_list = []
 dataframe_well = {'Well1F':well1, 'Well2F':well2} #defining dataframe
-
-wells = ['Well1F','Well2F'] #list of well for looping
+wells = ['Well1F', 'Well2F']
 
 #list of longitude and latitude for well 1 and well 2 respectively (a dummy coordinate)
 Longitude = [96.083956, 96.356427]
@@ -123,37 +122,40 @@ log_cols = np.arange(1,8)
 logplot = make_subplots(rows=1, cols=len(logs), shared_yaxes = True, specs=[[{},{},{},{},{}]], 
                         horizontal_spacing=0.005)
 
-for i in range(len(wells)):
+def wellplot(wellx, title):
     for j in range(len(logs)):
         if j == 2: #change to log for RT
             logplot.add_trace(go.Scatter(
-                x=dataframe_well[wells[i]][logs[j]], 
-                y=dataframe_well[wells[i]]['DEPTH'], 
+                x=wellx[logs[j]], 
+                y=wellx['DEPTH'], 
                 name=logs[j], 
                 line_color=colors[j]), 
-                              row=1, col=log_cols[j])
+                            row=1, col=log_cols[j])
             logplot.update_xaxes(type='log', row=1, col=log_cols[j], title_text=logs[j], tickfont_size=12, linecolor='#585858')
         else:
             logplot.add_trace(go.Scatter(
-                x=dataframe_well[wells[i]][logs[j]],
-                y=dataframe_well[wells[i]]['DEPTH'], 
+                x=wellx[logs[j]],
+                y=wellx['DEPTH'], 
                 name=logs[j], 
                 line_color=colors[j]), row=1, col=log_cols[j])
             logplot.update_xaxes(col=log_cols[j], title_text=logs[j], linecolor='#585858')
-    
+
     logplot.update_xaxes(showline=True, linewidth=2, linecolor='black', mirror=True, ticks='inside', tickangle=45)
     logplot.update_yaxes(tickmode='linear', tick0=0, dtick=250, showline=True, linewidth=2, ticks='outside', mirror=True, linecolor='black')
     logplot.update_yaxes(row=1, col=1, autorange='reversed')
     logplot.update_layout(height=700, width=700, showlegend=False)
     logplot.update_layout(
-                 title_text="Example of " + '<b>' + str(wells[i]) + '</b>', #Add a chart title
-                 title_font_family="Arial",
-                 title_font_size = 25, title_x=0.5)
-
-    logplot.write_html(r'templates\Well_Log_Plotly\fig'+str(wells[i])+'.html') # the plot is automatically saved as html
-
+                title_text="Example of " + '<b>' + title + '</b>', #Add a chart title
+                title_font_family="Arial",
+                title_font_size = 25, title_x=0.5)
+    
+    logplot.write_html(r'templates\Well_Log_Plotly\fig'+title+'.html') # the plot is automatically saved as html
     #list html plots to show what pop up folium should show on the map
-    html_list.append('fig'+str(wells[i])+'.html')
+    html_list.append('fig'+title+'.html')
+
+## Build well log plot 1 by 1
+# wellplot(dataframe_well['Well1F'], 'Well1F')
+# wellplot(dataframe_well['Well2F'], 'Well2F')
 
 #make a dataframe which is used for plotting the well head point in folium
 df_point = pd.DataFrame(list(zip(wells, html_list, Longitude, Latitude)), columns =['Well_Name', 'HTML_list', 'Longitude', 'Latitude'])
@@ -181,6 +183,6 @@ blocksearch = Search(
     collapsed=False
 ).add_to(map1)
     
-map1.save(r"templates\testing_map.html")
+# map1.save(r"templates\testing_map.html")
 
 # webbrowser.open(r'templates\testing_map.html')
