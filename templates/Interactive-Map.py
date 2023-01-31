@@ -153,9 +153,10 @@ def wellplot(wellx, title):
     #list html plots to show what pop up folium should show on the map
     html_list.append('fig'+title+'.html')
 
-## Build well log plot 1 by 1
-# wellplot(dataframe_well['Well1F'], 'Well1F')
-# wellplot(dataframe_well['Well2F'], 'Well2F')
+# Build well log plot automatically
+for i in range(len(wells)):
+    logplot.data = [] # clear the plot contents
+    wellplot(dataframe_well[wells[i]], wells[i])
 
 #make a dataframe which is used for plotting the well head point in folium
 df_point = pd.DataFrame(list(zip(wells, html_list, Longitude, Latitude)), columns =['Well_Name', 'HTML_list', 'Longitude', 'Latitude'])
